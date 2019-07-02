@@ -42,28 +42,26 @@ console.log(typeof deposit);
 
 let questionOne = prompt('Какие обязательные ежемесячные расходы у вас есть?');
 let questionTwo = prompt('Какие обязательные ежемесячные расходы у вас есть?');
-let questionThree = prompt('Во сколько это обойдется?');
-let questionFour = prompt('Во сколько это обойдется?');
+let answerOne = +prompt('Во сколько это обойдется?');
+let answerTwo = +prompt('Во сколько это обойдется?');
 console.log(questionOne);
 console.log(questionTwo);
-console.log(questionThree);
-console.log(questionFour);
+console.log(answerOne);
+console.log(answerTwo);
 
 /*  6) Вычислить доход за месяц, учитывая обязательные расходы,
 сохранить в переменную budgetMonth и вывести результат в консоль
  */
 
-let expenditureOne = 1300,
-    expenditureTwo = 627;
 
-let netMonthIncome = money - expenditureOne - expenditureTwo;
-console.log(netMonthIncome);
+let budgetMonth = money - answerOne - answerTwo;
+console.log(budgetMonth);
 
 /* 7) Зная budgetMonth, посчитать за сколько месяцев будет достигнута цель mission,
 вывести в консоль, округляя в большую сторону
  */
 
-let budgetMonth = 25000;
+
 let mission = 120000;
 let result = Math.ceil(mission/budgetMonth);
 console.log(result);
