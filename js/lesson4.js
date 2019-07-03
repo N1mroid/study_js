@@ -27,7 +27,8 @@ console.log(getExpensesMonth()); // 32600
 /* функция getAccumulatedMonth. Функция возвращает Накопления за месяц (Доходы минус расходы)
 Результат сохранить в переменную accumulatedMonth */
 
-let money = 88000,
+// let money = 88000,
+let money = +prompt('Ваш месячный доход?'),
     accumulatedMonth;
 
 let getAccumulatedMonth = function () {
@@ -96,3 +97,7 @@ function getStatusIncome() {
 }
 
 console.log('getStatusIncome: ', getStatusIncome());
+
+// Переменная addExpenses для дальнейшего проекта
+let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую?');
+console.log(addExpenses.split(', '));
