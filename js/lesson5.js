@@ -44,10 +44,10 @@ let getExpensesMonth = function () {
             console.log('Введите положительное число');
         }
     }
-    return sum = accumulatedMonth;
+    return sum;
 };
 
-getExpensesMonth();
+// getExpensesMonth();
 
 
 
@@ -56,13 +56,21 @@ getExpensesMonth();
 необходимо выводить “Цель не будет достигнута”
 */
 
+let getAccumulatedMonth = function () {
+    return accumulatedMonth = money - getExpensesMonth();
+};
+
+getAccumulatedMonth();
+
+console.log(accumulatedMonth);
+
 
 let period;
 
 let getTargetMonth = function () {
     let mission = 20000;
-    period = Math.ceil(mission/3000);
-    if (mission > 0) {
+    period = Math.ceil(mission/accumulatedMonth);
+    if (accumulatedMonth >= 0) {
         console.log(`Цель будет достигнута за ${period} месяца`);
     } else {
         console.log('Цель не будет достигнута');
@@ -70,7 +78,7 @@ let getTargetMonth = function () {
 
 };
 
-// getTargetMonth();
+getTargetMonth();
 
 // console.log(`Цель будет достигнута за ${period} месяца`);
 
@@ -80,15 +88,9 @@ let getTargetMonth = function () {
 “Что то пошло не так”
  */
 
-    money = +prompt('Ваш месячный доход?');
+    // money = +prompt('Ваш месячный доход?');
 
-let getAccumulatedMonth = function () {
-    return accumulatedMonth = money - getExpensesMonth();
-};
 
-getAccumulatedMonth();
-
-console.log(accumulatedMonth);
 
 
 
