@@ -9,7 +9,7 @@ let money,
       while (isNaN(money) || money === '' || money === null);
 };
 
-start();
+// start();
 
 let appData = {
     income: {},
@@ -19,12 +19,17 @@ let appData = {
     deposit: false,
     mission: 75000,
     period: 3,
-    asking: function () {
+    budget: money,
+    budgetDay: 0,
+    budgetMonth: 0,
+    expensesMonth: 0,
+    asking: function asking() {
         let addExpenses = prompt('Перечислите возможные расходы?');
         appData.addExpenses = addExpenses.toLocaleLowerCase().split(',');
         appData.deposit = confirm('Есть ли у вас депозит в банке?');
-        appData.expenses = appData.getTargetMonth(); {
-            let sum = 0,
+
+        appData.expenses = function() {
+            let sum,
                 expensesOne,
                 expensesTwo;
             for (let i = 0; i < 2; i++) {
@@ -35,28 +40,30 @@ let appData = {
                     expensesTwo = prompt('Введите обязательную статью расходов?', 'Сходить в Зоопарк');
                 }
 
+
                 sum += +prompt('Во сколько это обойдется?');
                 if (sum > 0) {
                     console.log(sum);
                 } else {
                     console.log('Введите положительное число');
                 }
+
             }
+            appData.expenses[expensesOne] = sum;
             return sum;
         };
-    },
-    budget: money,
-    budgetDay: 0,
-    budgetMonth: 0,
-    expensesMonth: 0,
-    getExpensesMonth: function () {
 
     },
+    getExpensesMonth: function getExpensesMonth() {
+        for ( let key in appData.expenses) {
+            console.log();
+        }
+    },
 
-    getAccumulatedMonth: function () {
+    getAccumulatedMonth: function getAccumulatedMonth() {
         return accumulatedMonth = money - appData.getExpensesMonth();
     },
-    getTargetMonth: function () {
+    getTargetMonth: function getTargetMonth() {
 
         let mission = 200000,
             period;
@@ -68,7 +75,7 @@ let appData = {
         }
 
     },
-    getStatusIncome: function () {
+    getStatusIncome: function getStatusIncome() {
         if (appData.budgetDay >= 800) {
             return ('Высокий уровень доходов');
         } else if (appData.budgetDay >= 300 && appData.budgetDay < 800) {
@@ -82,8 +89,12 @@ let appData = {
 
 };
 
-console.log(appData.asking());
+
+console.log(appData.getExpensesMonth());
 console.log(appData.expenses);
+appData.asking();
+// console.log(appData.asking());
+// console.log(appData.expenses(sum));
 
 // console.log(appData.getExpensesMonth());
 // console.log(appData.getAccumulatedMonth());
@@ -102,11 +113,79 @@ console.log(appData.expenses);
 // “ответ на первый вопрос” : “ответ на второй вопрос”
 
 
+// console.log(appData.asking());
 
 
 
 
 
 
+
+
+// let auto = {
+//     expense: {},
+//     expensesAll: function totalExpenditures() {
+//         let totalSum = 0,
+//             expenditureOne,
+//             expenditureTwo;
+//         for (let i = 0; i < 2; i++) {
+//             if (i === 0) {
+//                 expenditureOne = prompt('Обязательная статья расходов 1', 'Пойти на пляж');
+//             } else if (i === 1) {
+//                 expenditureTwo = prompt('Обязательная статья расходов 2', 'Сходить в кино');
+//             }
+//
+//             totalSum += +prompt('Во сколько это обойдется?');
+//             if (totalSum > 0) {
+//                 console.log(totalSum);
+//             } else {
+//                 console.log('Введите положительное число');
+//             }
+//
+//         }
+//         return totalSum;
+//
+//     },
+// };
+
+
+// console.log(auto.expense = auto.expensesAll());
+// console.log(auto.expense);
+
+
+// let car = {
+//     model: 'mazda',
+//     year: 2006,
+//     turbo: true,
+//     specifications: [],
+//     style: {
+//         color: 'blue'
+//     },
+//     ride: function(speed) {
+//         console.log('Машина едет на скорости ' + speed + ' км/ч');
+//     }
+// };
+//
+
+
+
+// car.ride(69);
+// console.log(car);
+
+let myobje = {
+    wheels: 4,
+    bumper: 1,
+    stop() {
+
+    },
+    speed() {
+        console.log('скорость');
+    }
+};
+
+
+// for (let key in appData) {
+//     console.log('Ключ: ' + key + ' Значение ' + appData[key]);
+// }
 
 
