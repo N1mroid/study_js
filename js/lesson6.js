@@ -1,13 +1,14 @@
 'use strict';
 
 let money,
+    totalSum,
     accumulatedMonth,
     start = function () {
-      do {
-          money = prompt('Ваш месячный доход?', 88000);
-      }
-      while (isNaN(money) || money === '' || money === null);
-};
+        do {
+            money = prompt('Ваш месячный доход?', 88000);
+        }
+        while (isNaN(money) || money === '' || money === null);
+    };
 
 // start();
 
@@ -23,45 +24,54 @@ let appData = {
     budgetDay: 0,
     budgetMonth: 0,
     expensesMonth: 0,
-    asking: function asking() {
+    asking: function() {
         let addExpenses = prompt('Перечислите возможные расходы?');
         appData.addExpenses = addExpenses.toLocaleLowerCase().split(',');
         appData.deposit = confirm('Есть ли у вас депозит в банке?');
+        let sum,
+            // expensesOne,
+            // expensesTwo;
+            answer,
+            question;
 
-        appData.expenses = function() {
-            let sum,
-                expensesOne,
-                expensesTwo;
-            for (let i = 0; i < 2; i++) {
+        for (let i = 0; i < 2; i++) {
 
-                if (i === 0) {
-                    expensesOne = prompt('Введите обязательную статью расходов?', 'Покормить гуся');
-                } else if (i === 1) {
-                    expensesTwo = prompt('Введите обязательную статью расходов?', 'Сходить в Зоопарк');
-                }
-
-
-                sum += +prompt('Во сколько это обойдется?');
-                if (sum > 0) {
-                    console.log(sum);
-                } else {
-                    console.log('Введите положительное число');
-                }
-
+            if (i === 0) {
+                question = prompt('Введите обязательную статью расходов?', 'Покормить гуся');
+                answer = +prompt('Во сколько обойдется?');
+                appData.expenses[question] = answer;
+            } else if (i === 1) {
+                question = prompt('Введите обязательную статью расходов?', 'Сходить в Зоопарк');
+                answer = +prompt('Во сколько обойдется?');
+                appData.expenses[question] = answer;
             }
-            appData.expenses[expensesOne] = sum;
-            return sum;
-        };
+
+
+            // sum += +prompt('Во сколько это обойдется?');
+            // if (sum > 0) {
+            //     console.log(sum);
+            // } else {
+            //     console.log('Введите положительное число');
+            // }
+
+
+
+        }
+        return appData.expenses[question] = answer;
 
     },
-    getExpensesMonth: function getExpensesMonth() {
+    getExpensesMonth: function() {
+        let totalCost = 0; //название любое))
         for ( let key in appData.expenses) {
-            console.log();
+            // console.log();
+            totalCost += appData.expenses[key];
         }
+        return appData.expensesMonth = totalCost;
     },
 
     getAccumulatedMonth: function getAccumulatedMonth() {
-        return accumulatedMonth = money - appData.getExpensesMonth();
+        // return accumulatedMonth = money - appData.getExpensesMonth();
+        return accumulatedMonth = appData.budget - appData.getExpensesMonth();
     },
     getTargetMonth: function getTargetMonth() {
 
@@ -89,10 +99,23 @@ let appData = {
 
 };
 
-
-console.log(appData.getExpensesMonth());
-console.log(appData.expenses);
 appData.asking();
+console.log(appData.expenses);
+appData.getExpensesMonth();
+console.log(appData.expensesMonth);
+
+
+// appData.asking();
+// // console.log(appData.expenses);
+// appData.getExpensesMonth();
+// console.log(expenses);
+
+// console.log(appData);
+// console.log(appData.asking());
+// console.log(appData.getExpensesMonth());
+// console.log(appData.expenses);
+// appData.asking();
+// console.log(appData.asking.expenses());
 // console.log(appData.asking());
 // console.log(appData.expenses(sum));
 
@@ -172,16 +195,16 @@ appData.asking();
 // car.ride(69);
 // console.log(car);
 
-let myobje = {
-    wheels: 4,
-    bumper: 1,
-    stop() {
-
-    },
-    speed() {
-        console.log('скорость');
-    }
-};
+// let myobje = {
+//     wheels: 4,
+//     bumper: 1,
+//     stop() {
+//
+//     },
+//     speed() {
+//         console.log('скорость');
+//     }
+// };
 
 
 // for (let key in appData) {
@@ -189,3 +212,117 @@ let myobje = {
 // }
 
 
+
+
+
+/////////////////////////////////////////////////////////////////////////////
+
+
+// let appDa = {
+//     expensio: {},
+//     expensioM: {},
+//     ask: function () {
+//         let sum,
+//         // expensesOne,
+//         // expensesTwo;
+//         answer,
+//         question;
+//
+// for (let i = 0; i < 2; i++) {
+//
+//     if (i === 0) {
+//         question = prompt('Введите обязательную статью расходов?', 'Покормить гуся');
+//         answer = +prompt('Во сколько обойдется?');
+//         appDa.expensio[question] = answer;
+//     } else if (i === 1) {
+//         question = prompt('Введите обязательную статью расходов?', 'Сходить в Зоопарк');
+//         answer = +prompt('Во сколько обойдется?');
+//         appDa.expensio[question] = answer;
+//     }
+//     // sum += +prompt('Во сколько это обойдется?');
+//     // if (sum > 0) {
+//     //     console.log(sum);
+//     // } else {
+//     //     console.log('Введите положительное число');
+//     // }
+//     }
+//     return appDa.expensio[question] = answer;
+//     },
+//     getExpensesMonth: function() {
+//         let totalCost = 0; //название любое))
+//         for ( let key in appDa.expensio) {
+//             // console.log();
+//             totalCost += appDa.expensio[key];
+//         }
+//         return appDa.expensioM = totalCost;
+//     },
+// };
+//
+// appDa.ask();
+// console.log(appDa.expensio);
+// appDa.getExpensesMonth();
+// console.log(appDa.expensioM);
+
+
+
+// let appDa = {
+//     asking: function () {
+//         let sum,
+//         // expensesOne,
+//         // expensesTwo;
+//         answer,
+//         question;
+//
+// for (let i = 0; i < 2; i++) {
+//
+//     if (i === 0) {
+//         question = prompt('Введите обязательную статью расходов?', 'Покормить гуся');
+//         answer = +prompt('Во сколько обойдется?');
+//         expensio[question] = answer;
+//     } else if (i === 1) {
+//         question = prompt('Введите обязательную статью расходов?', 'Сходить в Зоопарк');
+//         answer = +prompt('Во сколько обойдется?');
+//         expensio[question] = answer;
+//     }
+//
+//
+//     // sum += +prompt('Во сколько это обойдется?');
+//     // if (sum > 0) {
+//     //     console.log(sum);
+//     // } else {
+//     //     console.log('Введите положительное число');
+//     // }
+//
+// }
+// return expensio[question] = answer;
+//     }
+//
+// }
+//     };
+//
+
+
+// let expensio = {
+//
+// };
+
+// let expensioM;
+
+
+//
+//
+// let getExpensesMonth = function() {
+//     let totalCost = 0; //название любое))
+//     for ( let key in expensio) {
+//         // console.log();
+//         totalCost += expensio[key];
+//     }
+//     return expensioM = totalCost;
+// };
+
+
+
+// appDa();
+// console.log(expensio);
+// getExpensesMonth();
+// console.log(expensioM);
