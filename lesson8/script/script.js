@@ -19,7 +19,7 @@ let start = document.getElementById('start'),
     expensesTitle = document.querySelector('.expenses-title'),
     expensesAmount = document.querySelector('.expenses-amount'),
     expensesItems = document.querySelectorAll('.expenses-items'),
-    periodSelect = document.querySelector('.period-select'),
+    periodSelect = document.querySelector('.period-select'), // период расчета;
     additionalExpensesItem = document.querySelector('.additional_expenses-item'),
     targetAmount = document.querySelector('.target-amount'),
     incomeItems = document.querySelectorAll('.income-items');
@@ -103,7 +103,7 @@ let appData = {
         additionalIncomeValue.value = appData.addIncome.join(', ');
         targetMonthValue.value = Math.ceil(appData.getTargetMonth());
         incomePeriodValue.value = appData.calcPeriod();
-        incomePeriodValue.value = periodSelect.value;
+        incomePeriodValue.value = periodSelect.value * appData.budgetMonth;
 
     },
     addExpensesBlock: function () {
@@ -164,7 +164,7 @@ let appData = {
     },
     getExpensesMonth: function () {
         for (let key in appData.expenses) {
-            appData.expensesMonth += appData.expenses[key];
+            appData.expensesMonth += +appData.expenses[key];
         }
     },
     getBudget: function () {
