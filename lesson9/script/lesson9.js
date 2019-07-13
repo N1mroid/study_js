@@ -189,48 +189,43 @@ let appData = {
         });
     },
     getExpensesMonth: function () {
-      let self = this;
         for (let key in appData.expenses) {
-            self.expensesMonth += +appData.expenses[key];
+            console.log(this);
+            this.expensesMonth += +appData.expenses[key];
         }
     },
     getBudget: function () {
-      let self = this;
-        self.budgetMonth = self.budget + self.incomeMonth - self.expensesMonth;
-        self.budgetDay = self.budgetMonth / 30;
+        this.budgetMonth = this.budget + this.incomeMonth - this.expensesMonth;
+        this.budgetDay = this.budgetMonth / 30;
     },
     getTargetMonth: function () {
-      let self = this;
-        return targetAmount.value / self.budgetMonth;
+        return targetAmount.value / this.budgetMonth;
     },
     getStatusIncome: function () {
-      let self = this;
-        if (self.budgetDay > 800) {
+        if (this.budgetDay > 800) {
             return ('Высокий уровень дохода');
-        } else if (self.budgetDay > 300) {
+        } else if (this.budgetDay > 300) {
             return ('Средний уровень дохода');
-        } else if (self.budgetDay > 0) {
+        } else if (this.budgetDay > 0) {
             return ('Низкий уровень дохода');
         } else {
             return ('Что-то пошло не так');
         }
     },
     getInfoDeposit: function () {
-      let self = this;
-        if (self.deposit) {
+        if (this.deposit) {
             do {
-                self.percentDeposit = prompt('Какой годовой процент?', '9');
-            } while (isNaN(self.percentDeposit) || self.percentDeposit === '' || self.percentDeposit === null);
+                this.percentDeposit = prompt('Какой годовой процент?', '9');
+            } while (isNaN(this.percentDeposit) || this.percentDeposit === '' || this.percentDeposit === null);
             do {
-                self.moneyDeposit = prompt('Какая сумма заложена?', 142000);
+                this.moneyDeposit = prompt('Какая сумма заложена?', 142000);
             }
-            while (isNaN(self.moneyDeposit) || self.moneyDeposit === '' || self.moneyDeposit === null);
+            while (isNaN(this.moneyDeposit) || this.moneyDeposit === '' || this.moneyDeposit === null);
 
         }
     },
     calcPeriod: function () {
-      let self = this;
-        return self.budgetMonth * periodSelect.value;
+        return this.budgetMonth * periodSelect.value;
     }
 };
 
