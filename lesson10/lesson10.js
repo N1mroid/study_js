@@ -10,27 +10,29 @@ function DomElement(selector, height, width, bg, fontSize) {
 
 }
 
-DomElement.prototype.enterElements = function () {
   let insertData = prompt('Введите . или #');
-  if (insertData == '.') {
+
+DomElement.prototype.enterElements = function () {
+
+  if (this.selector[0] == '.') {
     let div = document.createElement('div');
-    div.style.cssText = 'height: 200px; width: 200px; background: brown; font-size: 30px;';
+    div.style.cssText = `height: ${this.height}; width: ${this.width}; background: ${this.bg}; font-size: ${this.fontSize};`;
     div.id = "text";
-    div.innerHTML = `<div> ${insertData} </div>`;
-    div.textContent = `Текст`;
+    div.innerHTML = `<div> ${this.selector} </div>`;
+    div.textContent = `${this.selector}`;
     document.body.appendChild(div);
 
   }
-  if (insertData == '#') {
-    let para = document.createElement('li');
-    para.style.cssText = 'height: 200px; width: 200px; background: brown; font-size: 30px;';
+  if (this.selector[0] == '#') {
+    let para = document.createElement('p');
+    para.style.cssText = `height: ${this.height}; width: ${this.width}; background: ${this.bg}; font-size: ${this.fontSize};`;
     para.className = "text";
-    para.innerHTML = `<p> ${insertData} </p>`;
-    para.textContent = `Текст`;
+    para.innerHTML = `<p> ${this.selector} </p>`;
+    para.textContent = `${this.selector}`;
     document.body.appendChild(para);
   }
 };
 
 
-let air = new DomElement();
+let air = new DomElement(insertData, 200, 300, 'red', 30);
 air.enterElements();
