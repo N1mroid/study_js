@@ -16,7 +16,7 @@ DomElement.prototype.enterElements = function () {
 
   if (this.selector[0] == '.') {
     let div = document.createElement('div');
-    div.style.cssText = `height: ${this.height}; width: ${this.width}; background: ${this.bg}; font-size: ${this.fontSize};`;
+    div.style.cssText = `height: ${this.height}px; width: ${this.width}px; background: ${this.bg}; font-size: ${this.fontSize}px;`;
     div.id = "text";
     div.innerHTML = `<div> ${this.selector} </div>`;
     div.textContent = `${this.selector}`;
@@ -25,7 +25,7 @@ DomElement.prototype.enterElements = function () {
   }
   if (this.selector[0] == '#') {
     let para = document.createElement('p');
-    para.style.cssText = `height: ${this.height}; width: ${this.width}; background: ${this.bg}; font-size: ${this.fontSize};`;
+    para.style.cssText = `height: ${this.height}px; width: ${this.width}px; background: ${this.bg}; font-size: ${this.fontSize}px;`;
     para.className = "text";
     para.innerHTML = `<p> ${this.selector} </p>`;
     para.textContent = `${this.selector}`;
