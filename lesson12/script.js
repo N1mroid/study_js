@@ -41,60 +41,11 @@ console.log(`Текущее время: ${nowHours}:${nowMinutes}:${nowSeconds} 
 // console.log(nowHours);
 console.log(now.getFullYear());
 
-
-function countTimer(deadline) {
-	// let timerHours = document.querySelector('#timer-hours'),
-	// 	timerMinutes = document.querySelector('#timer-minutes'),
-	// 	timerSeconds = document.querySelector('#timer-seconds');
-	let timerHours,
-		timerMinutes,
-		timerSeconds;
-
-	function getRemainingTime() {
-		let dateStop = new Date(deadline).getTime(),
-			dateNow = new Date().getTime(),
-			timeRemaining = (dateStop - dateNow) / 1000,
-			seconds = Math.floor(timeRemaining % 60);
-		if (seconds < 10) {
-			seconds = '0' + seconds;
-		}
-		let	minutes = Math.floor((timeRemaining / 60) % 60);
-		if(minutes < 10 ) {
-			minutes = '0' + minutes;
-		}
-		let hours = Math.floor(timeRemaining / 60 / 60); // % 24;
-		if ( hours < 10) {
-			hours = '0' + hours;
-		}
-		return {
-			timeRemaining,
-			hours,
-			minutes,
-			seconds
-		};
-	}
-
-	function updateClock() {
-		console.log(updateClock);
-		let timer = getRemainingTime();
-		// timerHours.textContent = timer.hours;
-		// timerMinutes.textContent = timer.minutes;
-		// timerSeconds.textContent = timer.seconds;
-
-		if (timer.timeRemaining > 0) {
-			setInterval(updateClock, 1000);
-		}
-		// } else {
-		// 	timerHours.textContent = '00';
-		// 	timerMinutes.textContent = '00';
-		// 	timerSeconds.textContent = '00';
-		// }
-	}
-	updateClock();
-}
-
-countTimer('23, July 2019');
+let finishDate = new Date('January 01 2020 00:00:00');
+let startDay = Date.now();
+let remaining = (finishDate - startDay)/1000; // парсим из миллисекунд в секунды
+let day = Math.floor(remaining / 60 / 60 / 24); // переводим на минуты / часы / дни
 
 
 
-console.log(`Осталось до нового года ${} дней`);
+console.log(`Осталось до нового года ${Math.ceil(day)} дней`);
