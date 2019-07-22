@@ -108,12 +108,32 @@ window.addEventListener('DOMContentLoaded', function () {
 	// 	iterations: Infinity
 	// });
 
-	// let popups = document.querySelector('.timer-title').addEventListener('click', () => {
 
-	let ops =	document.querySelector('.timer-title').animate({
-			opacity: [1, 0], // [ from, to ]
-			color: ["#fff", "#000"] // [ from, to ]
-		}, 1000);
+
+	// let popups = document.querySelector('.timer-title').addEventListener('click', () => {
+	// const width = document.documentElement.clientWidth;
+	// console.log('width: ', width);
+// let pops = document.querySelector('.popup');
+	// const pc = 992;
+	// console.log('pc ', pc);
+	// // console.log(pc);
+	// if (width > pc) {
+	// 	pops.animate({
+	// 		opacity: [0, 1], // [ from, to ]
+	// 		color: ["#fff", "red"] // [ from, to ]
+	// 	}, 1000);
+	// } else {
+	// 	pops.style.display = 'block';
+	// }
+let cl = document.querySelector('.popup').addEventListener('click', () => {
+
+		cl.animate({
+		opacity: [0, 1], // [ from, to ]
+		color: ["#fff", "red"], // [ from, to ]
+	}, 1000);
+});
+
+
 
 	// });
 
@@ -121,22 +141,22 @@ window.addEventListener('DOMContentLoaded', function () {
 
 
 
-	const togglePopUp = () => {
-		const popup = document.querySelector('.popup'),
-			popupBtn = document.querySelectorAll('.popup-btn'),
-			popupClose = document.querySelector('.popup-close');
-		popupBtn.forEach((element) => {
-			element.addEventListener('click', () => {
-				popup.style.display = 'block';
-			});
-		});
+	// const togglePopUp = () => {
+	// 	const popup = document.querySelector('.popup'),
+	// 		popupBtn = document.querySelectorAll('.popup-btn'),
+	// 		popupClose = document.querySelector('.popup-close');
+	// 	popupBtn.forEach((element) => {
+	// 		element.addEventListener('click', () => {
+	// 			popup.style.display = 'block';
+	// 		});
+	// 	});
 
-		popupClose.addEventListener('click', () => {
-			popup.style.display = 'none';
-		});
-	};
+	// 	popupClose.addEventListener('click', () => {
+	// 		popup.style.display = 'none';
+	// 	});
+	// };
 
-	togglePopUp();
+	// togglePopUp();
 
 
 
