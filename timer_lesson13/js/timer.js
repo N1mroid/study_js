@@ -110,28 +110,42 @@ window.addEventListener('DOMContentLoaded', function () {
 
 
 
-	// let popups = document.querySelector('.timer-title').addEventListener('click', () => {
-	// const width = document.documentElement.clientWidth;
-	// console.log('width: ', width);
-// let pops = document.querySelector('.popup');
-	// const pc = 992;
-	// console.log('pc ', pc);
-	// // console.log(pc);
-	// if (width > pc) {
-	// 	pops.animate({
-	// 		opacity: [0, 1], // [ from, to ]
-	// 		color: ["#fff", "red"] // [ from, to ]
-	// 	}, 1000);
-	// } else {
-	// 	pops.style.display = 'block';
-	// }
-let cl = document.querySelector('.popup').addEventListener('click', () => {
+	let popup = document.querySelector('.popup'),
+		popupBtn = document.querySelectorAll('.popup-btn'),
+		popupClose = document.querySelector('.popup-close');
+	
+		popupBtn.forEach((item) => {
+			item.addEventListener('click', () => {
+				let ourWidth = document.documentElement.clientWidth;
+				console.log(ourWidth);
+			
+				
+				
+				// console.log(pc);
+				if (ourWidth > 992) {
+					popup.style.display = 'block'; // чтобы появилась модалка
+					popup.animate({
+						opacity: [0, 1], // [ from, to ]
+						color: ["#fff", "red"] // [ from, to ]
+					}, 1000);
+				} else {
+					popup.style.display = 'block';
+				}
+			
+			});
+		});
 
-		cl.animate({
-		opacity: [0, 1], // [ from, to ]
-		color: ["#fff", "red"], // [ from, to ]
-	}, 1000);
-});
+		popupClose.addEventListener('click', () => {
+			popup.style.display = 'none';
+		});
+	
+// let cl = document.querySelector('.popup').addEventListener('click', () => {
+
+// 		cl.animate({
+// 		opacity: [0, 1], // [ from, to ]
+// 		color: ["#fff", "red"], // [ from, to ]
+// 	}, 1000);
+// });
 
 
 
