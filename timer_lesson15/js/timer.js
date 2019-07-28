@@ -2,55 +2,55 @@ window.addEventListener('DOMContentLoaded', function () {
 	'use strict';
 
 	//Timer
-	function countTimer(deadline) {
-		let timerHours = document.querySelector('#timer-hours'),
-			timerMinutes = document.querySelector('#timer-minutes'),
-			timerSeconds = document.querySelector('#timer-seconds');
+	// function countTimer(deadline) {
+	// 	let timerHours = document.querySelector('#timer-hours'),
+	// 		timerMinutes = document.querySelector('#timer-minutes'),
+	// 		timerSeconds = document.querySelector('#timer-seconds');
 
-		function getRemainingTime() {
-			let dateStop = new Date(deadline).getTime(),
-				dateNow = new Date().getTime(),
-				timeRemaining = (dateStop - dateNow) / 1000,
-				seconds = Math.floor(timeRemaining % 60);
-			if (seconds < 10) {
-				seconds = '0' + seconds;
-			}
-			let minutes = Math.floor((timeRemaining / 60) % 60);
-			if (minutes < 10) {
-				minutes = '0' + minutes;
-			}
-			let hours = Math.floor(timeRemaining / 60 / 60); // % 24;
-			if (hours < 10) {
-				hours = '0' + hours;
-			}
-			return {
-				timeRemaining,
-				hours,
-				minutes,
-				seconds
-			};
-		}
+	// 	function getRemainingTime() {
+	// 		let dateStop = new Date(deadline).getTime(),
+	// 			dateNow = new Date().getTime(),
+	// 			timeRemaining = (dateStop - dateNow) / 1000,
+	// 			seconds = Math.floor(timeRemaining % 60);
+	// 		if (seconds < 10) {
+	// 			seconds = '0' + seconds;
+	// 		}
+	// 		let minutes = Math.floor((timeRemaining / 60) % 60);
+	// 		if (minutes < 10) {
+	// 			minutes = '0' + minutes;
+	// 		}
+	// 		let hours = Math.floor(timeRemaining / 60 / 60); // % 24;
+	// 		if (hours < 10) {
+	// 			hours = '0' + hours;
+	// 		}
+	// 		return {
+	// 			timeRemaining,
+	// 			hours,
+	// 			minutes,
+	// 			seconds
+	// 		};
+	// 	}
 
-		function updateClock() {
-			let timer = getRemainingTime();
+	// 	function updateClock() {
+	// 		let timer = getRemainingTime();
 
-			timerHours.textContent = timer.hours;
-			timerMinutes.textContent = timer.minutes;
-			timerSeconds.textContent = timer.seconds;
+	// 		timerHours.textContent = timer.hours;
+	// 		timerMinutes.textContent = timer.minutes;
+	// 		timerSeconds.textContent = timer.seconds;
 
-			if (timer.timeRemaining > 0) {
-				setInterval(updateClock, 1000);
-			} else {
-				timerHours.textContent = '00';
-				timerMinutes.textContent = '00';
-				timerSeconds.textContent = '00';
-				return;
-			}
-		}
-		updateClock();
-	}
+	// 		if (timer.timeRemaining > 0) {
+	// 			setInterval(updateClock, 1000);
+	// 		} else {
+	// 			timerHours.textContent = '00';
+	// 			timerMinutes.textContent = '00';
+	// 			timerSeconds.textContent = '00';
+	// 			return;
+	// 		}
+	// 	}
+	// 	updateClock();
+	// }
 
-	countTimer('29, August 2019');
+	// countTimer('29, August 2019');
 
 
 
@@ -181,7 +181,7 @@ window.addEventListener('DOMContentLoaded', function () {
 			let newDot = document.createElement('li');
 			newDot.className = 'dot';
 			dots.appendChild(newDot);
-			console.log(newDot);
+			// console.log(newDot);
 			dot = document.querySelectorAll('.dot');
 		}
 
@@ -264,9 +264,46 @@ window.addEventListener('DOMContentLoaded', function () {
 	slider();
 
 
+	//наведение data
+
+	const photoBlock = document.getElementById('command');
+
+	let photoFunction = (target) => {
+		let defaultSrc = target.src;
+		target.src = target.dataset.img;
+		target.dataset.img = defaultSrc;
+	};
+
+	photoBlock.addEventListener('mouseover', (event) => {
+		let target = event.target;
+
+		if (target.matches('.command__photo')) {
+			photoFunction(target);
+		}
+
+	});
+
+	photoBlock.addEventListener('mouseout', (event) => {
+		let target = event.target;
+
+		if (target.matches('.command__photo')) {
+			photoFunction(target);
+		}
+
+	});
 
 
 
+	//калькулятор
+	let calc = document.querySelector('.calc');
+	console.log(calc);
+	let calcItem = calc.querySelectorAll('.my-calc-js');
+
+	calcItem.forEach((item) => {
+		item.addEventListener('input', () => {
+			item.value = item.value.replace(/[^0-9]/gi, '');
+		});
+	});
 
 
 
