@@ -362,6 +362,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
 	const sendForm = () => {
 
+
 		const errorMessage = 'Что-то пошло не так...',
 			loadMessage = 'Загрузка...',
 			successMessage = 'Спасибо! Мы скоро с вами свяжемся!';
@@ -374,6 +375,7 @@ window.addEventListener('DOMContentLoaded', function () {
 		statusMessage.style.cssText = 'font-size: 2rem;';
 
 		form.addEventListener('submit', (event) => {
+
 			event.preventDefault();
 			form.appendChild(statusMessage);
 			statusMessage.textContent = loadMessage;
@@ -392,10 +394,9 @@ window.addEventListener('DOMContentLoaded', function () {
 		});
 
 		const form2 = document.getElementById('form2');
-
 		form2.addEventListener('submit', (event) => {
 			event.preventDefault();
-			form.appendChild(statusMessage);
+			form2.appendChild(statusMessage);
 			statusMessage.textContent = loadMessage;
 			const formData = new FormData(form2);
 			let body = {};
@@ -415,9 +416,9 @@ window.addEventListener('DOMContentLoaded', function () {
 
 		form3.addEventListener('submit', (event) => {
 			event.preventDefault();
-			form.appendChild(statusMessage);
+			form3.appendChild(statusMessage);
 			statusMessage.textContent = loadMessage;
-			const formData = new FormData(form2);
+			const formData = new FormData(form3);
 			let body = {};
 			formData.forEach((val, key) => {
 				body[key] = val;
@@ -432,6 +433,7 @@ window.addEventListener('DOMContentLoaded', function () {
 		});
 
 		const postData = (body, outputData, errorData) => {
+
 			const request = new XMLHttpRequest();
 			request.addEventListener('readystatechange', () => {
 
@@ -440,7 +442,10 @@ window.addEventListener('DOMContentLoaded', function () {
 				}
 
 				if (request.status === 200) {
+
+
 					outputData();
+					clearInput();
 
 				} else {
 					errorMessage(request.status);
@@ -460,5 +465,43 @@ window.addEventListener('DOMContentLoaded', function () {
 	};
 
 	sendForm();
+
+
+
+	const phoneValidation = () => {
+		let formPhone = document.querySelectorAll('.form-phone');
+		formPhone.forEach((item) => {
+			item.addEventListener('input', () => {
+				item.value = item.value.replace(/[^+0-9]/gi, '');
+			});
+		});
+	};
+	phoneValidation();
+
+
+	const nameMessageValidation = () => {
+		let formName = document.querySelectorAll('.form-name');
+		let userMessage = document.querySelector('.mess');
+		formName.forEach((item) => {
+			item.addEventListener('input', () => {
+				item.value = item.value.replace(/[^а-яА-ЯёЁ\s]+$/gi, '');
+			});
+		});
+		userMessage.addEventListener('input', () => {
+			userMessage.value = userMessage.value.replace(/[^а-яА-ЯёЁ\s]+$/gi, '');
+		});
+	};
+	nameMessageValidation();
+
+
+
+	let inputs = document.getElementsByTagName('input');
+
+	function clearInput() {
+		for (let i = 0; i < inputs.length; i++) {
+			inputs[i].value = '';
+
+		}
+	}
 
 });
